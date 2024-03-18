@@ -7,7 +7,7 @@ namespace ZuciQuizMVC.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: AccountController
+        
         static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/User/") };
         public ActionResult Index()
         {
@@ -19,7 +19,7 @@ namespace ZuciQuizMVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> Verify(string userName, string password)  //verify the user 
+        public async Task<ActionResult> Verify(string userName, string password)
         {
             HttpResponseMessage response = await Svc.GetAsync($"ByuserName/{userName}");
             if (response.IsSuccessStatusCode)

@@ -29,7 +29,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
         public async Task<User> GetUserbyUserId(int userId)
         {
 
-            User quizUser = await (from user in contextDb.Users where user.Id == userId select user).FirstAsync();
+            User quizUser = await (from user in contextDb.Users where user.Id == userId select user).Include(role=>role.Role.RoleName).FirstAsync();
             return quizUser;
         }
 
