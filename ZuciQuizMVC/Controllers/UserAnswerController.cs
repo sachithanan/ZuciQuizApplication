@@ -124,8 +124,7 @@ namespace ZuciQuizMVC.Controllers
         public async Task<ActionResult> PostScore(Score score)
         {
             try
-            {
-
+            { 
                 await Svc1.PostAsJsonAsync("", score);
                 return RedirectToAction(nameof(Index));
             }

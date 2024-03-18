@@ -7,11 +7,12 @@
 
 <h1 style="text-align: center;">Welcome to Quiz</h1>
 
-<style>
+<div id="timer" style="text-align: center; margin-bottom: 20px;"></div>
 
+<style>
     body {
-        font-size: 16px; 
-        background-color: lightgreen; 
+        font-size: 16px;
+        background-color: lightgreen;
     }
 
     .question-container {
@@ -19,12 +20,12 @@
         border: 1px solid blue;
         border-radius: 5px;
         padding: 20px;
-        background-color: #fff; 
+        background-color: #fff;
     }
 
     .question {
         font-weight: bold;
-        font-size: 18px; 
+        font-size: 18px;
         margin-bottom: 15px;
     }
 
@@ -45,7 +46,7 @@
         border-radius: 5px;
         padding: 12px 24px;
         cursor: pointer;
-        font-size: 18px; 
+        font-size: 18px;
     }
 
         #quizForm button:hover {
@@ -76,7 +77,7 @@
 
 <form id="quizForm" asp-action="store" method="post" onsubmit="submitForm(event)">
     <input type="hidden" id="selectedOptionsInput" name="selectedOptions" />
-    <input type="hidden" name="topicId" value="@Model.topicId" /> 
+    <input type="hidden" name="topicId" value="@Model.topicId" />
     <div style="text-align: center;">
         <button type="submit">Submit</button>
     </div>
@@ -86,6 +87,36 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         var selectedValues = {};
+        var timeLeft;
+        var timerInterval;
+        function startTimer() {
+            timeLeft = sessionStorage.getItem('quizTimer') || 300; 
+            updateTimerDisplay();
+            timerInterval = setInterval(function () {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    submitForm(event);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            document.getElementById('timer').innerHTML = 'Time Left: ' + formatTime(timeLeft);
+            sessionStorage.setItem('quizTimer', timeLeft);
+        }
+
+        function formatTime(seconds) {
+            var min = Math.floor(seconds / 60);
+            var sec = seconds % 60;
+            return min + ':' + (sec < 10 ? '0' : '') + sec;
+        }
+
+        $(document).ready(function () {
+            startTimer();
+        });
 
         function options(radioButton, questionId, answerId) {
             var value = radioButton.value;

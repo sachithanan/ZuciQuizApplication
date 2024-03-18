@@ -6,8 +6,9 @@
     <title>Six Buttons</title>
     <style>
         body {
-            background-color: white; 
-            font-family: Arial, sans-serif;
+
+            background-color:lightgreen; 
+            font-family: Arial, sans-serif; 
             margin: 0;
             padding: 0;
         }
@@ -21,26 +22,21 @@
             background-color:deepskyblue; 
             border: none;
             color: white;
-            padding: 20px 40px; 
+            padding: 50px 70px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 18px; 
-            margin: 10px;
+            font-size: 16px;
+            margin: 20px;
             cursor: pointer;
-            border-radius: 8px; 
-            transition: background-color 0.3s ease; 
+            border-radius: 10px;
         }
-
-            .button:hover {
-                background-color: deepskyblue; 
-            }
 
         .welcome-text {
             text-align: center;
-            margin-top: 50px;
-            font-size: 24px;
-            color: #333; 
+            margin-top: 50px; /* Adjusted top margin for spacing */
+            font-size: 24px; /* Adjusted font size */
+            color: #333; /* Dark gray text color */
         }
     </style>
 </head>
@@ -59,5 +55,7 @@
         <button class="button" onclick="window.location='@Url.Action("Index", "UserAnswer")'">UserAnswer</button>
         <button class="button" onclick="window.location='@Url.Action("Index", "Score")'">Score</button>
     </div>
+
+
 </body>
 </html>

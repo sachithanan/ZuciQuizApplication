@@ -9,6 +9,6 @@ namespace ZuciQuizLibrary.Services.Interfaces
 {
     public interface IScoreService
     {
-        
+        Task InsertScore(Score score);
     }
 }

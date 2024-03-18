@@ -16,7 +16,19 @@ namespace QuizWebApi.Controllers
             _userAnswerRepository = userAnswerRepository;
             _scoreRepository = scoreRepository;
         }
-        
-       
+        [HttpPost]
+        public async Task<ActionResult> InsertScore(Score score)
+        {
+            try
+            {
+                await _scoreRepository.InsertScore(score);
+                return Created($"api/score/{score.Id}", score);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
     }
 }

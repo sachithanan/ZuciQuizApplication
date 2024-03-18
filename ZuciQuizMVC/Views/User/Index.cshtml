@@ -5,7 +5,7 @@
 }
 
 <style>
-    
+
     body, table {
         padding: 0;
         margin: 0;
@@ -14,7 +14,7 @@
     .table {
         border-collapse: collapse;
         width: 100%;
-        margin: 0 auto; 
+        margin: 0 auto;
     }
 
         .table th,
@@ -68,6 +68,7 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model)
         {
             <tr>
@@ -77,7 +78,7 @@
                     @Html.ActionLink("Edit", "Edit", new { userId = item.Id }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Details", "Details", new { userId = item.Id }, new { @class = "btn btn-info" })
                     @Html.ActionLink("Delete", "Delete", new { userId = item.Id }, new { @class = "btn btn-red" })
-                    
+
                 </td>
             </tr>
         }

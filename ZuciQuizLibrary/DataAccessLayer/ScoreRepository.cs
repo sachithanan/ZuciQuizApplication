@@ -14,5 +14,10 @@ namespace ZuciQuizLibrary.DataAccessLayer
     {
         ContextDb context = new ContextDb();
 
+        public async Task InsertScore(Score score)
+        {
+            await context.Scores.AddAsync(score);
+            await context.SaveChangesAsync();
+        }
     }
 }

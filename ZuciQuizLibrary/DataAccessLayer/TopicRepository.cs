@@ -21,10 +21,7 @@ namespace ZuciQuizLibrary.DataAccessLayer
 
         public async Task<Topic> GetByTopicId(int topicId)
         {
-            Topic topic = await (from top in contextDb.Topics where top.Id == topicId select top)
-                .Include(topic=>topic.Questions)
-                    .ThenInclude(question=>question.Answers)
-                .FirstAsync();
+            Topic topic = await (from top in contextDb.Topics where top.Id == topicId select top).FirstAsync();
             return topic;
         }
 
