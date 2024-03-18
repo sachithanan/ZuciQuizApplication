@@ -20,7 +20,6 @@ namespace ZuciQuizMVC.Controllers
             List<User> users = await Svc.GetFromJsonAsync<List<User>>("");
             return View(users);
         }
-        // GET: UserController/Details/5
 
         public async Task<ActionResult> Details(int userId)
         {
@@ -28,13 +27,11 @@ namespace ZuciQuizMVC.Controllers
             return View(user);
         }
 
-        // GET: UserController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(User user)
@@ -50,7 +47,6 @@ namespace ZuciQuizMVC.Controllers
             }
         }
 
-        // GET: UserController/Edit/5
         [Route("User/Edit/{userId}")]
         public async Task<ActionResult> Edit(int UserId)
         {
@@ -58,7 +54,6 @@ namespace ZuciQuizMVC.Controllers
             return View(user);
         }
 
-        // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("User/Edit/{userId}")]
@@ -81,7 +76,6 @@ namespace ZuciQuizMVC.Controllers
             return View(user);
         }
 
-        // POST: UserController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("User/Delete/{userId}")]
