@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ZuciQuizLibrary.Models.Answer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Option)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCorrect)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCorrect)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a href="@Url.Action("Edit", new { answerId = item.Id })" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="@Url.Action("Details", new { answerId = item.Id })" class="btn btn-sm btn-info">Details</a>
+                        <a href="@Url.Action("Delete", new { answerId = item.Id })" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="@Url.Action("GetQuestionWithOptions", new { questionId = item.QuestionID })" class="btn btn-sm btn-secondary">Options Check</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "IndexofAdmin")" class="btn btn-success btn-lg">Back to Home Index</a>
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table th, .table td {
+            padding: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+</style>
