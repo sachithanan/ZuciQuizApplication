@@ -6,6 +6,7 @@ namespace ZuciQuizMVC.Controllers
 {
     public class ScoreController : Controller
     {
+        static HttpClient Svc = new HttpClient { BaseAddress = new Uri("http://localhost:5182/api/Score/") };
         public ActionResult Details()
         {
             int userId = (int)HttpContext.Session.GetInt32("userId");
@@ -37,6 +38,11 @@ namespace ZuciQuizMVC.Controllers
                 score1.feedback = "Sorry You Are Fail in this Subject....Try to learn....";
             }*/
             return View(score1);
+        }
+        public async Task<ActionResult> GetOneUserScore(int userId)
+        {
+            List<Score> scores = await Svc.GetFromJsonAsync<List<Score>>($"ByUserId/{userId}");
+            return View(scores);
         }
     }
 }

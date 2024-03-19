@@ -19,5 +19,10 @@ namespace ZuciQuizLibrary.DataAccessLayer
             await context.Scores.AddAsync(score);
             await context.SaveChangesAsync();
         }
+        public async Task<List<Score>> GetOneUserScore(int userId)
+        {
+            List<Score> scores = await (from score in context.Scores where score.UserId == userId select score).ToListAsync();
+            return scores;
+        }
     }
 }

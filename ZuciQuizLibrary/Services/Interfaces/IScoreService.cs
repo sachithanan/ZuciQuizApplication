@@ -10,5 +10,6 @@ namespace ZuciQuizLibrary.Services.Interfaces
     public interface IScoreService
     {
         Task InsertScore(Score score);
+        Task<List<Score>> GetOneUserScore(int userId);
     }
 }

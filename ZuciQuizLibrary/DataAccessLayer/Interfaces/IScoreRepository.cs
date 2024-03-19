@@ -10,5 +10,6 @@ namespace ZuciQuizLibrary.DataAccessLayer.Interfaces
     public interface IScoreRepository
     {
         Task InsertScore(Score score);
+        Task<List<Score>> GetOneUserScore(int userId);
     }
 }

@@ -22,5 +22,17 @@ namespace ZuciQuizLibrary.Services
         {
             await _scoreRepository.InsertScore(score);
         }
+        public async Task<List<Score>> GetOneUserScore(int userId)
+        {
+            try
+            {
+                var scores = await _scoreRepository.GetOneUserScore(userId);
+                return scores;
+            }
+            catch
+            {
+                throw new Exception("User Not Found");
+            }
+        }
     }
 }

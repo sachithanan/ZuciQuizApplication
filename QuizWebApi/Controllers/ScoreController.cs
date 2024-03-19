@@ -30,5 +30,11 @@ namespace QuizWebApi.Controllers
             }
 
         }
+        [HttpGet("ByUserId/{userId}")]
+        public async Task<ActionResult> GetOneUserScore(int userId)
+        {
+            List<Score> scores = await _scoreRepository.GetOneUserScore(userId);
+            return Ok(scores);
+        }
     }
 }
